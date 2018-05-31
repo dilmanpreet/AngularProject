@@ -18,6 +18,7 @@ export class recipe{
                 if(count.name==nowingredient.name){
                     count.quantity+=nowingredient.quantity;
                     return;
+                }
                 this.ingredientsList.push(nowingredient);
             }
         }

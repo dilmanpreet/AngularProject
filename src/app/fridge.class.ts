@@ -5,71 +5,74 @@ import { recipe } from "./recipe.class";
 export class fridge{
     
     
-    ingre : Array<ingredient> =[];
+    ingredientsInFridge : Array<ingredient> =[];
     buyList : Array<ingredient> =[];
     haveList : Array<ingredient> =[];
 
- 
-   checkRecipe(recipe: recipe){
-        for (let i=0;i<=recipe.ingredients.length;i++) {
-            for (let j=0;i<=this.ingre.length;j++) {
-                    if(this.ingre[j].name==recipe.ingredients[i].name){
-                        if(this.ingre[j].quantity>=recipe.ingredients[i].quantity){
-                            this.haveList.push(recipe.ingredients[i]);
+     /**
+    * @function addToFridge Adds the Ingrdient to the fridge
+    * @param notYetFridgeIngredient ingredient being added to the fridge
+    */
+   addToFridge(notYetFridgeIngredient:ingredient){     
+        
+        if(this.ingredientsInFridge.length==0){ // adding if the fridge is empty
+            this.ingredientsInFridge.push(notYetFridgeIngredient);
+        }
+        else{    
+            for (let tempIng of this.ingredientsInFridge) {            
+                    if(tempIng.name==notYetFridgeIngredient.name){  //checking if there is element of same name
+                    tempIng.add(notYetFridgeIngredient.quantity);//add to the quantity of the object in the fridge
+                    return;
+                    }      
+                    
+             }//end for loop
+                this.ingredientsInFridge.push(notYetFridgeIngredient);
+        }//end if-else loop
+     } //end add to fridge function
+   
+    
+     /**
+    * @function RemoveFromFridge remove the Ingredient from the fridge
+    * @param FridgeIngredient ingredient being removed frome the fridge
+    */
+     RemoveFromFridge(FridgeIngredient:ingredient,quantityBeingRemoved:number){
+        if(this.ingredientsInFridge.length !== 0){  //if the fridge is empty
+             let ingredientsPositonInFridge:number=this.ingredientsInFridge.indexOf(FridgeIngredient);
+            for (let tempIng of this.ingredientsInFridge) {  // for removing a certain number of element from fridge
+                
+                if(FridgeIngredient.name==tempIng.name && tempIng.quantity>=quantityBeingRemoved){
+                tempIng.subtract(quantityBeingRemoved);
+                    return;            
+                }        
+                
+            }
+           this.ingredientsInFridge.splice(ingredientsPositonInFridge,1);
+        } //end if for empty fridge
+    }//end removeFromFridge function
+    
+     /**
+    * @function checkRecipe check if a receipe can be made by checking the ingredients in fridge and gives a shopping list 
+    * @param recipeToBeMade recipe being made and checked
+    * @returns buyList with the items that need to be bought and haveList with the items we have in the list
+    */
+
+    checkRecipe(recipeToBeMade: recipe):ingredient[]{
+        for (let i=0;i<=recipeToBeMade.ingredientsList.length;i++) {
+            for (let j=0;i<=this.ingredientsInFridge.length;j++) {
+                    if(this.ingredientsInFridge[j].name==recipeToBeMade.ingredientsList[i].name){
+                        if(this.ingredientsInFridge[j].quantity>=recipeToBeMade.ingredientsList[i].quantity){
+                            this.haveList.push(recipeToBeMade.ingredientsList[i]);
                         }
-                        else if(this.ingre[j].quantity<recipe.ingredients[i].quantity && this.ingre[j].quantity>0){
-                                let diff : number =recipe.ingredients[i].quantity-this.ingre[j].quantity;
-                                this.buyList.push(new ingredient(recipe.ingredients[i].name,diff));
+                        else if(this.ingredientsInFridge[j].quantity<recipeToBeMade.ingredientsList[i].quantity && this.ingredientsInFridge[j].quantity>0){
+                                let diff : number =recipeToBeMade.ingredientsList[i].quantity-this.ingredientsInFridge[j].quantity;
+                                this.buyList.push(new ingredient(recipeToBeMade.ingredientsList[i].name,diff));
                             }
                             else{
-                                this.buyList.push(recipe.ingredients[i]);
+                                this.buyList.push(recipeToBeMade.ingredientsList[i]);
                             }
                     }
             }    
         }
-
-    }
-
-
-    add(ing : string,amt:number){
-    //add(tempIng:ingredient){
-        let isItThere :boolean = false;
-        let tempIng:ingredient=new ingredient(ing, amt);
-        for (let i=0;i<this.ingre.length;i++) { 
-            let temp:string = this.ingre[i].name;
-            if(temp==tempIng.name){
-
-              this.ingre[i].add(tempIng.quantity);
-              isItThere=true;
-            }        
-            
-        }
-        if(isItThere==false){
-            this.ingre.push(new ingredient(ing, amt));
-        }
-
-    }
-    
-    remove(ing:string, amt: number){
-       // remove(tempIng:ingredient){     
-        let isItZero:number = 1;
-        let tempIng:ingredient=new ingredient(ing, amt);
-        let position:number=-1;
-        for (let i=0;i<this.ingre.length;i++) { 
-            let temp:string = this.ingre[i].name;
-            if(temp==tempIng.name){
-              this.ingre[i].subtract(tempIng.quantity);
-              isItZero=this.ingre[i].quantity;
-              position=i;
-            }        
-            
-        }
-        if(isItZero<=0){
-            this.ingre.splice(position,1);
-        }
-    //     if(isItZero<=0){
-    //         ingre.splice(ing,1);
-    //     }
-
+        return this.buyList,this.haveList;
     }
 }
