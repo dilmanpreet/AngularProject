@@ -10,6 +10,8 @@ Run ng test to execute the unit tests via Karma.
 
 
 ## Ingredient Class
+Ingredient Name
+Ingredient Quantity
 
 ## Recipe Class
 
