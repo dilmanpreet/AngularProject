@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/Forms';
+import { AppComponent } from '../app.component';
 import { recipeCompComponent } from './recipe-comp.component';
 
 describe('recipeCompComponent', () => {
@@ -8,7 +9,7 @@ describe('recipeCompComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ recipeCompComponent ]
+      declarations: [ recipeCompComponent, AppComponent ]
     })
     .compileComponents();
   }));
