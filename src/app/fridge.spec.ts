@@ -27,16 +27,16 @@ it("Test", function(){
     apple.subtract(1);
     expect(apple.quantity).toBe(2);
   });
-  it(" receipe add item test",function(){
+  it(" recipe add item test",function(){
     let apple= new ingredient("apple", 3);
-    let applePieTest= new recipe(30);
+    let applePieTest= new recipe("applePieTest",30);
     applePieTest.addIngredient(apple);
     expect(applePieTest.ingredientsList.length).toBe(1);
   });
-  it(" receipe add instructions test",function(){
+  it(" recipe add instructions test",function(){
     let apple= new ingredient("apple", 3);
     let milk= new ingredient("milk", 1);
-    let applePieTest= new recipe(30);
+    let applePieTest= new recipe("applePieTest",30);
     applePieTest.addIngredient(apple);
     applePieTest.addIngredient(milk);
     applePieTest.addInstruction("mix the sugar in milk");

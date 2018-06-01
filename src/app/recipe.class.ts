@@ -31,9 +31,10 @@ export class recipe{
     addInstruction(inst: String){
        this.instructionsList.push(inst);
     }
-
-     constructor(public time: number){ 
-         time=this.recipeTime;    
+   
+     constructor(public name:string,public time: number){ 
+        this.name=name;
+        this.recipeTime=time;    
      }
  
 }
