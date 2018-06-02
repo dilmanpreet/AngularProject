@@ -10,7 +10,7 @@ import {recipe} from "../recipeapp/recipe.class";
 export class recipeCompComponent implements OnInit {
   
   
-  newrecipeName : string = "";
+  newrecipeName : string = "new";
   newRecipeTime:number =0;
   
   // time : Array<string> = ["30 min","40 min","10 min"];
@@ -27,7 +27,7 @@ export class recipeCompComponent implements OnInit {
   // new ingredient("sugar", 12)];
 
   // formBinding: ingredient = new ingredient("",0);
-  formBinding2: recipe = new recipe("",0);
+  formBinding2: recipe = new recipe(" ",0);
 
   selectedItem : recipe = null;
   editName : recipe = null;

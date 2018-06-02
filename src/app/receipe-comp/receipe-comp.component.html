@@ -1,0 +1,68 @@
+<h1>
+Receipe Management Program works!
+</h1>
+<div>
+ 
+  <label>Receipe name:
+    <input [(ngModel)]="receipe.name" placeholder="name" type="text" [(ngModel)]="formBinding2.name">
+  </label>
+  <label>Cooking Time</label><input [(ngModel)]="receipe.time"  placeholder=0 type="number" [(ngModel)]="formBinding2.time">
+  
+  <input type=button type="button" value="" (click)="addReceipe()" value="add Receipe" >
+  <div *ngIf="selectedItem != null">
+      Selected {{selectedItem.name}}
+      
+      <label >New Receipe name:
+          <input placeholder="name" type="text" [(ngModel)]="selectedItem.name">
+        </label>
+        <label>New Cooking Time</label><input  placeholder=0 type="number" [(ngModel)]="selectedItem.time">
+        
+        <input type=button type="button" value="" (click)="EditReceipe()" value="Edit Receipe" >
+
+       <input type=button type="button" value="" (click)="deleteReceipe()" value="DeleteReceipe" >
+     
+   </div> 
+  
+</div>
+<hr>
+<table>
+  <tr>
+    <th>Receipe Name</th>
+    <th>Receipe time</th>
+    <!-- <th>ingredients</th>
+    <th>Insructions</th> -->
+  </tr>
+  <tr>
+      <td> new {{ receipe.name }}</td>
+      <td>{{ receipe.time }}  minutes</td>
+      
+    </tr>
+
+  <tr *ngFor="let receipe of receipe" (click)="select(receipe)" class="{{receipe == selectedItem?'selected':'' }}">
+     <td>{{receipe.name}}</td>
+    <td>{{receipe.time}}</td>
+ 
+  </tr>
+</table>
+
+
+
+ <!-- two way data binding
+  <h1> ingredient List </h1>
+  <table>
+    <tr *ngFor="let ingredients">
+      <td>{{ingredients.name}}</td>
+      <td>{{ingredients.quantity}}</td>
+    </tr>
+  </table>
+  <label>name</label><input type="text" [(ngModel)]="formBinding.name"><br>
+ <input type="button" value="" (click)="addIngredient()" value="Add ingredient">
+   <!-- selection -->
+  <!-- <h1> Receipes below</h1>
+  <table>
+    <tr *ngFor="let receipe " (click)="select(receipe)" class="{{receipe == selectedItem?'selected':'' }}" >
+      <td>{{receipe.name}}</td>
+      <td>{{receipe.time}}</td>
+    </tr>
+  </table>
+  --> 

@@ -4,7 +4,7 @@ export class recipe{
     ingredientsList : Array<ingredient> =[];
     instructionsList : Array<String> = [];
     recipeTime:number;
-    
+    name: string;
       /**
      * @function addItem Adds the Item to the IngredientList
      * @param Ingredient It is the Ingredient being added to the Recipe 
@@ -32,8 +32,8 @@ export class recipe{
        this.instructionsList.push(inst);
     }
    
-     constructor(public name:string,public time: number){ 
-        this.name=name;
+     constructor(public nname:string,public time: number){ 
+        this.name=nname;
         this.recipeTime=time;    
      }
  
