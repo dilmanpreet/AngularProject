@@ -1,69 +1,74 @@
-<h1>
-  Recipe Management Program
-  </h1>
-  <div>
-     
-    <label>Recipe name:
-      <input [(ngModel)]="recipe.name" placeholder="name" type="text" [(ngModel)]="formBinding2.name">
-    </label>
-    <label>Cooking Time</label><input [(ngModel)]="recipe.time"  placeholder=0 type="number" [(ngModel)]="formBinding2.time">
-    
-    <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
-    <div *ngIf="selectedItem != null">
-        Selected {{selectedItem.name}}
-        
-        <label >New Recipe name:
-            <input placeholder="name" type="text" [(ngModel)]="selectedItem.name">
-          </label>
-          <label>New Cooking Time</label><input  placeholder=0 type="number" [(ngModel)]="selectedItem.time">
-          
-          <input type=button type="button" value="" (click)="Editrecipe()" value="Edit recipe" >
-  
-         <input type=button type="button" value="" (click)="deleterecipe()" value="Delete Recipe" >
-       
-     </div> 
-    
-  </div>
-  <hr>
-  <table>
-    <tr>
-      <th>Recipe Name</th>
-      <th>Recipe time</th>
-      <!-- <th>ingredients</th>
-      <th>Insructions</th> -->
-    </tr>
-    <tr>
-        <td> new {{ recipe.name }}</td>
-        <td>{{ recipe.time }}  minutes</td>
-        
-      </tr>
-  
-    <tr *ngFor="let recipe of recipe" (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}">
-       <td>{{recipe.name}}</td>
-      <td>{{recipe.time}}</td>
+<h1>Recipe Management Program</h1>
+<div>
    
+  <label>Recipe name:
+    <input [(ngModel)]="recipeArray.name" placeholder="name" type="text" [(ngModel)]="formBinding.name">
+  </label>
+  <label>Cooking Time</label><input [(ngModel)]="recipeArray.time"  placeholder=0 type="number" [(ngModel)]="formBinding.time">
+  
+  <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
+  <div *ngIf="selectedItem != null">
+      Selected {{selectedItem.name}}
+      
+      <label >New Recipe name:
+          <input placeholder="name" type="text" [(ngModel)]="formBinding2.name">
+        </label>
+        <label>New Cooking Time</label><input  placeholder=0 type="number" [(ngModel)]="formBinding2.time">
+        
+        <input type=button type="button" value="" (click)="editRecipe()" value="Edit recipe" >
+
+       <input type=button type="button" value="" (click)="deleteRecipe()" value="Delete Recipe" >
+
+       <input type=button type="button" value="" (click)="hideMenu()" value="Hide Edit Menu" >
+     
+   </div> 
+  
+</div>
+<hr>
+<table>
+  <tr>
+    <th>Recipe Name</th>
+    <th>Recipe time</th>
+    <th>ingredients</th>
+    <th>Insructions</th>
+  </tr>
+ 
+
+  <tr *ngFor="let r of recipeArray" (click)="selectRecipe(r)" class="{{r == selectedItem?'selected':'' }}">
+     <td>{{r.name}}</td>
+    <td>{{r.time + ' minutes'}}</td>
+    <td> <input type=button type="button" >
+     
+    </td>
+    <td>
+      <input type="text" name=""value="" (click)="addInstruction()" placeholder="Add Instruction" >
+    </td>
+  </tr>
+  <tr *ngIf="formBinding.time != 0">
+    <td>  {{ recipeArray.name }}</td>
+    <td>{{ recipeArray.time }}  minutes</td>
+    
+  </tr>
+</table>
+
+
+
+ <!-- two way data binding
+  <h1> ingredient List </h1>
+  <table>
+    <tr *ngFor="let ingredients">
+      <td>{{ingredients.name}}</td>
+      <td>{{ingredients.quantity}}</td>
     </tr>
   </table>
-  
-  
-  
-   <!-- two way data binding
-    <h1> ingredient List </h1>
-    <table>
-      <tr *ngFor="let ingredients">
-        <td>{{ingredients.name}}</td>
-        <td>{{ingredients.quantity}}</td>
-      </tr>
-    </table>
-    <label>name</label><input type="text" [(ngModel)]="formBinding.name"><br>
-   <input type="button" value="" (click)="addIngredient()" value="Add ingredient">
-     <!-- selection -->
-    <!-- <h1> recipes below</h1>
-    <table>
-      <tr *ngFor="let recipe " (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}" >
-        <td>{{recipe.name}}</td>
-        <td>{{recipe.time}}</td>
-      </tr>
-    </table>
-    --> 
-  
+  <label>name</label><input type="text" [(ngModel)]="formBinding.name"><br>
+ <input type="button" value="" (click)="addIngredient()" value="Add ingredient">
+   <!-- selection -->
+  <!-- <h1> recipes below</h1>
+  <table>
+    <tr *ngFor="let recipe " (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}" >
+      <td>{{recipe.name}}</td>
+      <td>{{recipe.time}}</td>
+    </tr>
+  </table>
+  --> 
