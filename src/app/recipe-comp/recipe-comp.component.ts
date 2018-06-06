@@ -16,9 +16,9 @@ export class RecipeCompComponent implements OnInit {
   // time : Array<string> = ["30 min","40 min","10 min"];
 
   recipe : Array<recipe> = [new recipe(" ", 0)
-  // new recipe("mango shake", 5),
-  // new recipe("banana shake", 3),
-  // new recipe("french fries", 12)
+  ,new recipe("mango shake", 5),
+  new recipe("banana shake", 3),
+  new recipe("french fries", 12)
 ];
 
   // ingredient : Array<ingredient> = [new ingredient("milk", 5),
@@ -67,6 +67,7 @@ export class RecipeCompComponent implements OnInit {
    
   }
   // deleting a recipe
+  
   deleteRecipe(){
     let index=-1;
     for(let i=0;i<=recipe.length;i++){
@@ -77,6 +78,9 @@ export class RecipeCompComponent implements OnInit {
   
   }
   }
+  // if(this.selectedRecipe !== null){
+  //   +    this.userRecipeName.splice(this.userRecipeName.indexOf(this.userRecipeNameInput), 1);
+  //   +    this.recipe.splice(this.userRecipeName.indexOf(this.userRecipeNameInput),1);
   
 
 }

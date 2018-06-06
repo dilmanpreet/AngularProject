@@ -2,14 +2,14 @@ import { fridge } from "./fridge.class";
 import {ingredient } from "./ingredient.class";
 import {recipe } from "./recipe.class";
 
-describe("A suite", function() {
+describe("Fridge Testing", function() {
     
 beforeEach(function()
 {
 
 });
 
-it("Test", function(){
+it("Spec file running Test", function(){
   let apple= new ingredient("apple", 3);
 
   apple.add(1);
@@ -17,12 +17,12 @@ it("Test", function(){
   expect(true).toBe(true);
 });
 
-  it("add test",function(){
+  it("Ingredient add test",function(){
     let apple= new ingredient("apple", 3);
      apple.add(1);
     expect(apple.quantity).toBe(4);
   });
-  it("subtract test",function(){
+  it("Ingredient subtract test",function(){
     let apple= new ingredient("apple", 3);
     apple.subtract(1);
     expect(apple.quantity).toBe(2);
@@ -48,17 +48,18 @@ it("Test", function(){
     let apple= new ingredient("apple", 3);
     let fridgeTest = new fridge();
     fridgeTest.addToFridge(apple);
+    apple.add(1);
     expect(fridgeTest.ingredientsInFridge.length).toBe(1);     
     expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(4); //4 as we added 3 and 1 apple
   });
 
   it("add test for fridge different items added",function(){
     let apple= new ingredient("apple", 3);
-    let mango= new ingredient("mango", 2);
+    let mango= new ingredient("mango", 1);
     let fridgeTest = new fridge();
     fridgeTest.addToFridge(apple);
     fridgeTest.addToFridge(mango);
-    expect(fridgeTest.ingredientsInFridge.length).toBe(2);     
+    expect(fridgeTest.ingredientsInFridge.length).toBe(2);   // apple at 0 and mango at 1  
     expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(3); //3 as we added 3 apple
     expect(fridgeTest.ingredientsInFridge[1].quantity).toBe(1); // 1 as we have 1 mango
   });
@@ -78,9 +79,9 @@ it("Test", function(){
     let fridgeTest = new fridge();
     fridgeTest.addToFridge(apple);
     fridgeTest.addToFridge(mango);
-    expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(3); //3 as we added 3 apple
+     expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(3); //3 as we added 3 apple
     fridgeTest.RemoveFromFridge(apple,3);
-    expect(fridgeTest.ingredientsInFridge.length).toBe(1);//just mango left     
+    expect(fridgeTest.ingredientsInFridge.length).toBe(2);//just mango left     
   });
   it("remove test for fridge just removing quantity",function(){
     let apple= new ingredient("apple", 3);
