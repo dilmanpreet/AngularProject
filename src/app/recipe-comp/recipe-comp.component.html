@@ -1,68 +1,69 @@
 <h1>
-Recipe Management Program
-</h1>
-<div>
-   
-  <label>Recipe name:
-    <input [(ngModel)]="recipe.name" placeholder="name" type="text" [(ngModel)]="formBinding2.name">
-  </label>
-  <label>Cooking Time</label><input [(ngModel)]="recipe.time"  placeholder=0 type="number" [(ngModel)]="formBinding2.time">
-  
-  <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
-  <div *ngIf="selectedItem != null">
-      Selected {{selectedItem.name}}
-      
-      <label >New Recipe name:
-          <input placeholder="name" type="text" [(ngModel)]="selectedItem.name">
-        </label>
-        <label>New Cooking Time</label><input  placeholder=0 type="number" [(ngModel)]="selectedItem.time">
-        
-        <input type=button type="button" value="" (click)="Editrecipe()" value="Edit recipe" >
-
-       <input type=button type="button" value="" (click)="deleterecipe()" value="Delete Recipe" >
+  Recipe Management Program
+  </h1>
+  <div>
      
-   </div> 
+    <label>Recipe name:
+      <input [(ngModel)]="recipe.name" placeholder="name" type="text" [(ngModel)]="formBinding2.name">
+    </label>
+    <label>Cooking Time</label><input [(ngModel)]="recipe.time"  placeholder=0 type="number" [(ngModel)]="formBinding2.time">
+    
+    <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
+    <div *ngIf="selectedItem != null">
+        Selected {{selectedItem.name}}
+        
+        <label >New Recipe name:
+            <input placeholder="name" type="text" [(ngModel)]="selectedItem.name">
+          </label>
+          <label>New Cooking Time</label><input  placeholder=0 type="number" [(ngModel)]="selectedItem.time">
+          
+          <input type=button type="button" value="" (click)="Editrecipe()" value="Edit recipe" >
   
-</div>
-<hr>
-<table>
-  <tr>
-    <th>Recipe Name</th>
-    <th>Recipe time</th>
-    <!-- <th>ingredients</th>
-    <th>Insructions</th> -->
-  </tr>
-  <tr>
-      <td> new {{ recipe.name }}</td>
-      <td>{{ recipe.time }}  minutes</td>
-      
-    </tr>
-
-  <tr *ngFor="let recipe of recipe" (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}">
-     <td>{{recipe.name}}</td>
-    <td>{{recipe.time}}</td>
- 
-  </tr>
-</table>
-
-
-
- <!-- two way data binding
-  <h1> ingredient List </h1>
+         <input type=button type="button" value="" (click)="deleterecipe()" value="Delete Recipe" >
+       
+     </div> 
+    
+  </div>
+  <hr>
   <table>
-    <tr *ngFor="let ingredients">
-      <td>{{ingredients.name}}</td>
-      <td>{{ingredients.quantity}}</td>
+    <tr>
+      <th>Recipe Name</th>
+      <th>Recipe time</th>
+      <!-- <th>ingredients</th>
+      <th>Insructions</th> -->
     </tr>
-  </table>
-  <label>name</label><input type="text" [(ngModel)]="formBinding.name"><br>
- <input type="button" value="" (click)="addIngredient()" value="Add ingredient">
-   <!-- selection -->
-  <!-- <h1> recipes below</h1>
-  <table>
-    <tr *ngFor="let recipe " (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}" >
-      <td>{{recipe.name}}</td>
+    <tr>
+        <td> new {{ recipe.name }}</td>
+        <td>{{ recipe.time }}  minutes</td>
+        
+      </tr>
+  
+    <tr *ngFor="let recipe of recipe" (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}">
+       <td>{{recipe.name}}</td>
       <td>{{recipe.time}}</td>
+   
     </tr>
   </table>
-  --> 
+  
+  
+  
+   <!-- two way data binding
+    <h1> ingredient List </h1>
+    <table>
+      <tr *ngFor="let ingredients">
+        <td>{{ingredients.name}}</td>
+        <td>{{ingredients.quantity}}</td>
+      </tr>
+    </table>
+    <label>name</label><input type="text" [(ngModel)]="formBinding.name"><br>
+   <input type="button" value="" (click)="addIngredient()" value="Add ingredient">
+     <!-- selection -->
+    <!-- <h1> recipes below</h1>
+    <table>
+      <tr *ngFor="let recipe " (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}" >
+        <td>{{recipe.name}}</td>
+        <td>{{recipe.time}}</td>
+      </tr>
+    </table>
+    --> 
+  
