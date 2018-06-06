@@ -67,12 +67,17 @@ export class RecipeCompComponent implements OnInit {
    
   }
   // deleting a recipe
-  deleteRecipe(){
-    let index=-1;
-    for(let i=0;i<=recipe.length;i++){
-      if(recipe.name==this.selectedItem.name){
-        index=i;
-      }
+  deleteRecipe(recipe){
+    
+    this.selectedItem = recipe;    
+  
+    let index=recipe.indexOf(this.selectedItem);
+
+    //  index=-1;
+    // for(let i=0;i<=recipe.length;i++){
+    //   if(recipe.name==this.selectedItem.name){
+    //     index=i;
+    //   }
       this.recipe.splice(index,1);
   
   }

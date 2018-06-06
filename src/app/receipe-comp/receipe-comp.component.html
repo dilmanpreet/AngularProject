@@ -1,25 +1,25 @@
 <h1>
-Recipe Management Program
+recipe Management Program works!
 </h1>
 <div>
-   
-  <label>Recipe name:
+ 
+  <label>recipe name:
     <input [(ngModel)]="recipe.name" placeholder="name" type="text" [(ngModel)]="formBinding2.name">
   </label>
   <label>Cooking Time</label><input [(ngModel)]="recipe.time"  placeholder=0 type="number" [(ngModel)]="formBinding2.time">
   
-  <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
+  <input type=button type="button" value="" (click)="addrecipe()" value="add recipe" >
   <div *ngIf="selectedItem != null">
       Selected {{selectedItem.name}}
       
-      <label >New Recipe name:
+      <label >New recipe name:
           <input placeholder="name" type="text" [(ngModel)]="selectedItem.name">
         </label>
         <label>New Cooking Time</label><input  placeholder=0 type="number" [(ngModel)]="selectedItem.time">
         
-        <input type=button type="button" value="" (click)="EditRecipe()" value="Edit recipe" >
+        <input type=button type="button" value="" (click)="Editrecipe()" value="Edit recipe" >
 
-       <input type=button type="button" value="" (click)="deleteRecipe()" value="Delete Recipe" >
+       <input type=button type="button" value="" (click)="deleterecipe(recipe)" value="Deleterecipe" >
      
    </div> 
   
@@ -27,8 +27,8 @@ Recipe Management Program
 <hr>
 <table>
   <tr>
-    <th>Recipe Name</th>
-    <th>Recipe time</th>
+    <th>recipe Name</th>
+    <th>recipe time</th>
     <!-- <th>ingredients</th>
     <th>Insructions</th> -->
   </tr>
