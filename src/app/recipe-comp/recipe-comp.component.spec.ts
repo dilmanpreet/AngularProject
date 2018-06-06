@@ -19,8 +19,30 @@ describe('RecipeCompComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+  describe("Recipe management Tesing:",() => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});
+
+
+    it('Creating multiple recipes with different number of instructions and ingredients', () => {
+      expect(true).toBe(true);
+    });
+    it('Adding Multiple recipe', () => {
+ 
+        expect(true).toBe(true);
+      
+  
+    });
+
+  
+    it('Removing multiple recipe', () => {
+  
+        expect(true).toBe(true);
+      });
+    });  
+  });      
+  
+      
+
