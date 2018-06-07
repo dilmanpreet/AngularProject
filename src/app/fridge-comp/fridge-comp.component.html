@@ -1,3 +1,30 @@
-<p>
-  fridge-comp works!
-</p>
+<h1>Fridge</h1>
+<table>
+  <tr>
+    <th> Ingredient </th>
+    <th> Quantity </th>
+  </tr>
+  <tr *ngFor="let i of service.Fridge.ingredientsInFridge" (click)="selectIngredient(i)" class="{{ selectedItem == i ? 'selected' : '' }}" >
+    <td>{{i.name}}</td>
+    <td>{{i.quantity}}</td>
+  </tr>
+</table> 
+
+<div>
+  <label >Ingredient Name</label> 
+  <input type="text" [(ngModel)]="newItem.name">
+    <label>Quantity</label>
+    <input type="number" [(ngModel)]="changeItem.quantity" placeholder=0>
+
+</div>
+<div>
+    <input type="button" value="add Quantity" (click)="addItemToFridge()">
+  <input type=button value="" (click)="removingIngredient()" value="Delete Recipe" >
+  <input type=button  value="" (click)="hideMenu()" value="Hide Edit Menu" >
+      
+</div>
+
+
+
+   
+  

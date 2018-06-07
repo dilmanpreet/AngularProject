@@ -37,9 +37,7 @@
   <tr *ngFor="let r of recipeArray" (click)="selectRecipe(r)" class="{{r == selectedItem?'selected':'' }}">
      <td>{{r.name}}</td>
     <td>{{r.time + ' minutes'}}</td>
-    <td> <input type=button type="button" >
-     
-    </td>
+    <td> <input type=button type="button" > ADD Ingredient </td>
     <td>
       <input type="text" name=""value="" (click)="addInstruction()" placeholder="Add Instruction" >
     </td>
