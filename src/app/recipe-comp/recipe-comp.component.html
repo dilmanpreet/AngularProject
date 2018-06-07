@@ -4,7 +4,7 @@
   <label>Recipe name:
     <input [(ngModel)]="recipeArray.name" placeholder="name" type="text" [(ngModel)]="formBinding.name">
   </label>
-  <label>Cooking Time</label><input [(ngModel)]="recipeArray.time"  placeholder=0 type="number" [(ngModel)]="formBinding.time">
+  <label>Cooking Time</label><input [(ngModel)]="recipeArray.time"  placeholder=0 min="0" type="number" [(ngModel)]="formBinding.time">
   
   <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
   <div *ngIf="selectedItem != null">

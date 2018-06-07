@@ -15,7 +15,7 @@ export class RmsService {
 	public ing3 : ingredient = new ingredient("Milk",3);
 	public ing4 : ingredient = new ingredient("sugar",5);
 	
-	public f1 : fridge = new fridge();
+	public ourFridge : fridge = new fridge();
 
   public recipeArray = new Array<recipe>();
   public selectedRecipe = new recipe("",0);
@@ -29,13 +29,13 @@ export class RmsService {
     this.recipeArray[0].addIngredient(this.ing3);
     this.recipeArray[0].addIngredient(this.ing4);
   
-    this.f1.addToFridge(this.ing1);
-		this.f1.addToFridge(this.ing2);
-    this.f1.addToFridge(this.ing4);
+    this.ourFridge.addToFridge(this.ing1);
+		this.ourFridge.addToFridge(this.ing2);
+    this.ourFridge.addToFridge(this.ing4);
   }
 
   generateShoppigList(){
-    this.ingredientBuyList = this.f1.checkRecipe(this.selectedRecipe)[0];
+    this.ingredientBuyList = this.ourFridge.checkRecipe(this.selectedRecipe)[0];
     console.log("list is:" + this.ingredientBuyList.length);
   }
  

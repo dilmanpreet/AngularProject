@@ -14,7 +14,7 @@ export class FridgeCompComponent implements OnInit {
 
   constructor(service:RmsService) {   this.service = service; }
 
-  public  selectedItem: ingredient = null;
+  public  selectedItem: ingredient = new ingredient("",0);
   public  changeItem : ingredient =  new ingredient("",0);;
   public  newItem : ingredient =  new ingredient("",0);;
   
@@ -40,6 +40,7 @@ editQuantity(){
 }
 // removing a Ingredient
 removingIngredient(){
+  
   this.service.ourFridge.RemoveFromFridge(this.selectedItem,this.selectedItem.quantity);
 
   
