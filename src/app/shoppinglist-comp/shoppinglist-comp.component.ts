@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ingredient} from "../ingredient.class";
+import { RmsService } from '../rms/rms.service';
 
 @Component({
   selector: 'app-shoppinglist-comp',
@@ -8,9 +9,11 @@ import {ingredient} from "../ingredient.class";
 })
 export class ShoppinglistCompComponent implements OnInit {
 
-      
-    constructor(){}
+  public service = new RmsService();
 
+  constructor(service : RmsService) {
+    this.service = service;
+  }
 
   ngOnInit() {
   }

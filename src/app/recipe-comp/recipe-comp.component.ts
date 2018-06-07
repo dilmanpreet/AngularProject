@@ -9,6 +9,10 @@ import { RmsService } from '../rms/rms.service';
   styleUrls: ['./recipe-comp.component.css']
 })
 export class RecipeCompComponent implements OnInit {
+  public service = new RmsService();
+
+  constructor(service:RmsService) {   this.service = service; }
+
   
   
   recipeArray : Array<recipe> = [new recipe(" ", 0),
@@ -20,8 +24,6 @@ formBinding: recipe = new recipe("",0);
 formBinding2: recipe = new recipe("",0);
 selectedItem : recipe = null;
 
-
-constructor(service:RmsService) { }
 
 ngOnInit() {
 
