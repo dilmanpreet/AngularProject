@@ -1,5 +1,5 @@
-import {ingredient } from "./ingredient.class";
-import { recipe } from "./recipe.class";
+import {ingredient } from "../ingredient.class";
+import { recipe } from "../recipe-comp/recipe.class";
 
 
 export class fridge{
@@ -56,7 +56,7 @@ export class fridge{
     * @returns buyList with the items that need to be bought and haveList with the items we have in the list
     */
 
-    checkRecipe(recipeToBeMade: recipe):ingredient[]{
+    checkRecipe(recipeToBeMade: recipe){
         for (let i=0;i<=recipeToBeMade.ingredientsList.length;i++) {
             for (let j=0;i<=this.ingredientsInFridge.length;j++) {
                     if(this.ingredientsInFridge[j].name==recipeToBeMade.ingredientsList[i].name){
@@ -73,6 +73,12 @@ export class fridge{
                     }
             }    
         }
-        return this.buyList,this.haveList;
+        return [this.buyList,this.haveList];
     }
+}
+
+export class ShoppingList {
+    
+    constructor(public ingredients: ingredient[]){}
+
 }

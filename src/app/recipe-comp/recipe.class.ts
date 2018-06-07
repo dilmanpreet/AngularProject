@@ -1,4 +1,4 @@
-import {ingredient} from "./ingredient.class";
+import {ingredient} from "../ingredient.class";
 
 export class recipe{
     ingredientsList : Array<ingredient> =[];
