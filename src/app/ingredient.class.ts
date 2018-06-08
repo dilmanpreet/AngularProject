@@ -1,8 +1,6 @@
 //making and exporting the ingredient class
 export class ingredient{
     
-
-
     /**
      * @param name Name Of Ingredient
      * @param quantity Quantity Of Ingredient

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ingredient} from "../recipeapp/ingredient.class";
-import {recipe} from "../recipeapp/recipe.class";
+import {ingredient} from "../ingredient.class";
+import {recipe} from "./recipe.class";
+import { RmsService } from '../rms/rms.service';
 
 @Component({
   selector: 'app-recipe-comp',
@@ -20,7 +21,7 @@ formBinding2: recipe = new recipe("",0);
 selectedItem : recipe = null;
 
 
-constructor() { }
+constructor(service:RmsService) { }
 
 ngOnInit() {
 

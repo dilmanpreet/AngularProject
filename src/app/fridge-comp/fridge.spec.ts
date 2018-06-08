@@ -1,6 +1,6 @@
 import { fridge } from "./fridge.class";
-import {ingredient } from "./ingredient.class";
-import {recipe } from "./recipe.class";
+import {ingredient } from "../ingredient.class";
+import {recipe } from "../recipe-comp/recipe.class"; 
 
 describe("A suite", function() {
     
