@@ -1,3 +1,20 @@
 <p>
   shoppinglist-comp works!
 </p>
+
+<div *ngIf="service.selectedRecipe != null" >
+
+<h3>{{service.selectedRecipe.name}}</h3>
+<!-- <script></script>
+  <ul *ngFor="let x of service.ourfridge.buyList">
+      <li> Buy {{ x.name }}
+                  
+    </li></ul>
+    
+    
+  <ul *ngFor="let x of service.ourfridge.haveList">
+      <li> have {{ x.name }}
+                  
+    </li></ul>
+
+  </div> -->

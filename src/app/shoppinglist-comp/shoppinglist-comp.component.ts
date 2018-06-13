@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ingredient} from "../ingredient.class";
+import {recipe} from "../recipe-comp/recipe.class";
+import { fridge } from '../fridge-comp/fridge.class';
 import { RmsService } from '../rms/rms.service';
+
+
 
 @Component({
   selector: 'app-shoppinglist-comp',

@@ -6,23 +6,28 @@ export class recipe{
     recipeTime:number;
     recipeName: string;
       /**
-     * @function addItem Adds the Item to the IngredientList
-     * @param Ingredient It is the Ingredient being added to the Recipe 
-     */
-    addIngredient(nowingredient:ingredient){
-        if(this.ingredientsList.length==0){
-            this.ingredientsList.push(nowingredient);
-        }
-        else{
-            for(let count of this.ingredientsList){
-                if(count.name==nowingredient.name){
-                    count.quantity+=nowingredient.quantity;
-                    return;
-                }
-                this.ingredientsList.push(nowingredient);
-            }
-        }
-     }
+         /** 
+    * @function addIngredient Adds the Ingrdient to the recipe
+    * @param notYetrecipeIngredient ingredient being added to the recipe
+    */
+   addIngredient(notYetrecipeIngredient:ingredient){     
+        
+    if(this.ingredientsList.length==0){ // adding if the recipe is empty
+        this.ingredientsList.push(notYetrecipeIngredient);
+    }
+    else{    
+        for (let tempIng of this.ingredientsList) {            
+                if(tempIng.name==notYetrecipeIngredient.name){  //checking if there is element of same name
+                tempIng.add(notYetrecipeIngredient.quantity);//add to the quantity of the object in the recipe
+                return;
+                }      
+                
+         }//end for loop
+            this.ingredientsList.push(notYetrecipeIngredient);
+    }//end if-else loop
+ } //end add to recipe function
+
+
 
       /**
      * @function addInstruction Add Instruction for the Recipe

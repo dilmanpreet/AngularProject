@@ -17,8 +17,10 @@ export class RecipeCompComponent implements OnInit {
   
 formBinding: recipe = new recipe("",0);
 formBinding2: recipe = new recipe("",0);
-selectedItem : recipe = null;
+bindedIngredient :ingredient = new ingredient("",0);
+
 selectedIgredient : ingredient= new ingredient("",0); 
+str:string ="";
 
 
 ngOnInit() {
@@ -30,29 +32,28 @@ addRecipe() {
 }
 // selecting an item
 selectRecipe(sel: recipe){
-  this.selectedItem = sel;
-  this.formBinding2= sel;    
+  this.service.selectedRecipe = sel;
+   // this.service.generateShoppigList();
+  this.service.ourFridge.checkRecipe(sel);
+  //this.formBinding2= sel;    use this to edit in realtime
 }
   // editing a recipe
 editRecipe(){
-this.selectedItem.name=this.formBinding2.name;
-this.selectedItem.time=this.formBinding2.time;
+this.service.selectedRecipe.name=this.formBinding2.name;
+this.service.selectedRecipe.time=this.formBinding2.time;
  
 }
 // deleting a recipe
 deleteRecipe(){
-  let index=this.service.recipeArray.indexOf(this.selectedItem);
+  let index=this.service.recipeArray.indexOf(this.service.selectedRecipe);
   this.service.recipeArray.splice(index,1);
   
 }
 hideMenu(){
-this.selectedItem = null;
+this.service.selectedRecipe = null;
 }
 
-//  addIngredient(){
-
-//   this.ingredient.push(new ingredient(this.formBinding.name,this.formBinding.quantity)); 
-// }
+ 
 
 }
 

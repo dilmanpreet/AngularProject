@@ -2,13 +2,13 @@
 <div>
    
   <label>Recipe name:
-    <input [(ngModel)]="service.recipeArray.name" placeholder="name" type="text" [(ngModel)]="formBinding.name">
+    <input  placeholder="name" type="text" [(ngModel)]="formBinding.name">
   </label>
-  <label>Cooking Time</label><input [(ngModel)]="service.recipeArray.time"  placeholder=0 min="0" type="number" [(ngModel)]="formBinding.time">
+  <label>Cooking Time</label><input placeholder=0 min="0" type="number" [(ngModel)]="formBinding.time">
   
   <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
-  <div *ngIf="selectedItem != null">
-      Selected {{selectedItem.name}}
+  <div *ngIf="service.selectedRecipe != null">
+      Selected {{service.selectedRecipe.name}}
       
       <label >New Recipe name:
           <input placeholder="name" type="text" [(ngModel)]="formBinding2.name">
@@ -34,26 +34,35 @@
   </tr>
  
 
-  <tr *ngFor="let r of service.recipeArray" (click)="selectRecipe(r)" class="{{r == selectedItem?'selected':'' }}">
+  <tr *ngFor="let r of service.recipeArray" (click)="selectRecipe(r)" class="{{r == service.selectedRecipe?'selected':'' }}">
      <td>{{r.name}}</td>
     <td>{{r.time + ' minutes'}}</td>
 
     <td> 
-      <ol *ngFor="let x of r.ingredientList" >
-        <li> {{ x.ingredientsList.name }}
-          
-          <p>g</p>
-      </li></ol>
-      <input type=button type="button"   (click)="r.addIngredient()" > ADD Ingredient </td>
+      <ul *ngFor="let x of r.ingredientsList" >
+        <li> {{ x.quantity+" "+x.name  }}
+                    
+      </li></ul>
+      <input type="text"  *ngIf="service.selectedRecipe != null && service.selectedRecipe===r"  [(ngModel)]="bindedIngredient.name" placeholder="Add ingredient" >
+      <input type="number"  *ngIf="service.selectedRecipe != null && service.selectedRecipe===r" [(ngModel)]="bindedIngredient.quantity" placeholder=0 min="0">
+      <input type="button" *ngIf="service.selectedRecipe != null&& service.selectedRecipe===r" (click)="r.addIngredient(bindedIngredient)" value="add ingredient" >
+      </td>
     <td>
-      <input type="text"  [(ngModel)]="r.instructionsList" (click)="addInstruction()" placeholder="Add Instruction" >
+      
+        <ul *ngFor="let x of r.instructionsList">
+            <li> {{ x }}
+                        
+          </li></ul>
+      <input type="text"  *ngIf="service.selectedRecipe != null && service.selectedRecipe===r"  [(ngModel)]="str" placeholder="Add Instruction" >
+      <input type="button" *ngIf="service.selectedRecipe != null&& service.selectedRecipe===r" (click)="r.addInstruction(str)" value="add" >
+   
     </td>
   </tr>
-  <tr *ngIf="formBinding.time != 0">
-    <td>  {{ recipeArray.name }}</td>
-    <td>{{ recipeArray.time }}  minutes</td>
+  <!-- <tr *ngIf="formBinding.name != null && formBinding.time != 0 ">
+    <td>  {{ formBinding.name }}</td>
+    <td>{{ formBinding.time }}  minutes</td>
     
-  </tr>
+  </tr> -->
 </table>
 
 
@@ -71,7 +80,7 @@
    <!-- selection -->
   <!-- <h1> recipes below</h1>
   <table>
-    <tr *ngFor="let recipe " (click)="select(recipe)" class="{{recipe == selectedItem?'selected':'' }}" >
+    <tr *ngFor="let recipe " (click)="select(recipe)" class="{{recipe == service.selectedRecipe?'selected':'' }}" >
       <td>{{recipe.name}}</td>
       <td>{{recipe.time}}</td>
     </tr>
