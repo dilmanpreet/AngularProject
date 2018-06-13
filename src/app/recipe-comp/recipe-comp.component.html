@@ -2,9 +2,9 @@
 <div>
    
   <label>Recipe name:
-    <input [(ngModel)]="recipeArray.name" placeholder="name" type="text" [(ngModel)]="formBinding.name">
+    <input [(ngModel)]="service.recipeArray.name" placeholder="name" type="text" [(ngModel)]="formBinding.name">
   </label>
-  <label>Cooking Time</label><input [(ngModel)]="recipeArray.time"  placeholder=0 min="0" type="number" [(ngModel)]="formBinding.time">
+  <label>Cooking Time</label><input [(ngModel)]="service.recipeArray.time"  placeholder=0 min="0" type="number" [(ngModel)]="formBinding.time">
   
   <input type=button type="button" value="" (click)="addRecipe()" value="add Recipe" >
   <div *ngIf="selectedItem != null">
@@ -15,11 +15,11 @@
         </label>
         <label>New Cooking Time</label><input  placeholder=0 type="number" [(ngModel)]="formBinding2.time">
         
-        <input type=button type="button" value="" (click)="editRecipe()" value="Edit recipe" >
+        <input type=button type="button" (click)="editRecipe()" value="Edit recipe" >
 
-       <input type=button type="button" value="" (click)="deleteRecipe()" value="Delete Recipe" >
+       <input type=button type="button" (click)="deleteRecipe()" value="Delete Recipe" >
 
-       <input type=button type="button" value="" (click)="hideMenu()" value="Hide Edit Menu" >
+       <input type=button type="button" (click)="hideMenu()" value="Hide Edit Menu" >
      
    </div> 
   
@@ -34,12 +34,19 @@
   </tr>
  
 
-  <tr *ngFor="let r of recipeArray" (click)="selectRecipe(r)" class="{{r == selectedItem?'selected':'' }}">
+  <tr *ngFor="let r of service.recipeArray" (click)="selectRecipe(r)" class="{{r == selectedItem?'selected':'' }}">
      <td>{{r.name}}</td>
     <td>{{r.time + ' minutes'}}</td>
-    <td> <input type=button type="button" > ADD Ingredient </td>
+
+    <td> 
+      <ol *ngFor="let x of r.ingredientList" >
+        <li> {{ x.ingredientsList.name }}
+          
+          <p>g</p>
+      </li></ol>
+      <input type=button type="button"   (click)="r.addIngredient()" > ADD Ingredient </td>
     <td>
-      <input type="text" name=""value="" (click)="addInstruction()" placeholder="Add Instruction" >
+      <input type="text"  [(ngModel)]="r.instructionsList" (click)="addInstruction()" placeholder="Add Instruction" >
     </td>
   </tr>
   <tr *ngIf="formBinding.time != 0">

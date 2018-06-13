@@ -35,18 +35,18 @@ export class fridge{
     * @function RemoveFromFridge remove the Ingredient from the fridge
     * @param FridgeIngredient ingredient being removed frome the fridge
     */
-     RemoveFromFridge(FridgeIngredient:ingredient,quantityBeingRemoved:number){
-         
+     RemoveFromFridge(FridgeIngredient:ingredient){
+        //  ,quantityBeingRemoved:number
         if(this.ingredientsInFridge.length !== 0){  //if the fridge is empty
              let ingredientsPositonInFridge:number=this.ingredientsInFridge.indexOf(FridgeIngredient);
-            for (let tempIng of this.ingredientsInFridge) {  // for removing a certain number of element from fridge
+            // for (let tempIng of this.ingredientsInFridge) {  // for removing a certain number of element from fridge
                 
-                if(FridgeIngredient.name==tempIng.name && tempIng.quantity>=quantityBeingRemoved && tempIng.quantity!=0 ){
-                tempIng.subtract(quantityBeingRemoved);
-                    return;            
-                }        
+            //     if(FridgeIngredient.name==tempIng.name && tempIng.quantity>=quantityBeingRemoved && tempIng.quantity!=0 ){
+            //     tempIng.subtract(quantityBeingRemoved);
+            //         return;            
+            //     }        
                 
-            }
+            // }
            this.ingredientsInFridge.splice(ingredientsPositonInFridge,1);
         } //end if for empty fridge
     }//end removeFromFridge function

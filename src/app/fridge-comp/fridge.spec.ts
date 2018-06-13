@@ -69,7 +69,7 @@ it("Test", function(){
     fridgeTest.addToFridge(apple);
     fridgeTest.addToFridge(mango);
     expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(3); //3 as we added 3 apple
-    fridgeTest.RemoveFromFridge(apple,4);
+    // fridgeTest.RemoveFromFridge(apple,4);
     expect(fridgeTest.ingredientsInFridge.length).toBe(1);//just mango left     
   });
   it("remove test for fridge removing the amount we have",function(){
@@ -79,7 +79,7 @@ it("Test", function(){
     fridgeTest.addToFridge(apple);
     fridgeTest.addToFridge(mango);
     expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(3); //3 as we added 3 apple
-    fridgeTest.RemoveFromFridge(apple,3);
+    // fridgeTest.RemoveFromFridge(apple,3);
     expect(fridgeTest.ingredientsInFridge.length).toBe(1);//just mango left     
   });
   it("remove test for fridge just removing quantity",function(){
@@ -89,7 +89,7 @@ it("Test", function(){
     fridgeTest.addToFridge(apple);
     fridgeTest.addToFridge(mango);
     expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(3); //3 as we added 3 apple
-    fridgeTest.RemoveFromFridge(apple,1);
+    // fridgeTest.RemoveFromFridge(apple,1);
     expect(fridgeTest.ingredientsInFridge.length).toBe(2);//mango and apple both there
     expect(fridgeTest.ingredientsInFridge[0].quantity).toBe(2); //2 as we removed 1 apple     
   });

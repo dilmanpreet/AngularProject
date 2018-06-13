@@ -19,8 +19,8 @@
 </div>
 <div>
     <input type="button" value="add Ingredient" (click)="addItemToFridge()">
-  <input *ngIf="selectedItem.quantity !=0"type=button value="" (click)="removingIngredient()" value="Throw away the Quantity" >
-  <input *ngIf="selectedItem.quantity ==0"type=button value="" (click)="removingIngredient()" value="Take out from Fridge" >
+  <input *ngIf="selectedItem.quantity !=0"type=button  (click)="removingIngredient()" value="Throw it away" >
+  <!-- <input *ngIf="selectedItem.quantity ==0"type=button  (click)="removingIngredient()" value="Take out from Fridge" > -->
   <!-- <input type=button  value="" (click)="hideMenu()" value="Hide Edit Menu" > -->
       
 </div>

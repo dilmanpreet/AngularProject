@@ -13,7 +13,16 @@ export class RmsService {
   public ing1 : ingredient = new ingredient("apple", 2);
 	public ing2 : ingredient = new ingredient("orange",1);
 	public ing3 : ingredient = new ingredient("Milk",3);
-	public ing4 : ingredient = new ingredient("sugar",5);
+  public ing4 : ingredient = new ingredient("sugar",5);
+  
+  
+  public rec1 : recipe = new recipe("mango shake", 5);
+  public rec2 : recipe = new recipe("Banana shake", 5);
+  public rec3 : recipe = new recipe("Milk shake", 3);
+  public rec4 : recipe = new recipe("French fries",5);
+  
+
+
 	
 	public ourFridge : fridge = new fridge();
 
@@ -23,11 +32,22 @@ export class RmsService {
   public ingredientBuyList : Array<ingredient> = new Array<ingredient>();
 
   constructor() {
-    this.recipeArray.push(new recipe("recipe1",15));
-    this.recipeArray[0].addIngredient(this.ing1);
+    this.recipeArray.push(this.rec1);
+    this.recipeArray.push(this.rec2);
+    this.recipeArray.push(this.rec3);
+    this.recipeArray.push(this.rec4);
+
     this.recipeArray[0].addIngredient(this.ing2);
     this.recipeArray[0].addIngredient(this.ing3);
     this.recipeArray[0].addIngredient(this.ing4);
+    
+    this.recipeArray[0].addInstruction("Take milk");
+    this.recipeArray[0].addInstruction("take sugar");
+    this.recipeArray[0].addInstruction("mix them");
+  
+    this.recipeArray[3].addInstruction("Take fries");
+    this.recipeArray[3].addInstruction("put in frier");
+    this.recipeArray[3].addInstruction("Feed to hardil");
   
     this.ourFridge.addToFridge(this.ing1);
 		this.ourFridge.addToFridge(this.ing2);
